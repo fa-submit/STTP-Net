@@ -75,7 +75,7 @@ class BalancedSoftmaxLoss(nn.Module):
 class EffBalancedSoftmaxLoss(nn.Module):
     def __init__(self, cls_num_list):
         super().__init__()
-        beta = 0.9999
+        beta = 0.999
         cls_num_list = 1.0 - torch.pow(beta, cls_num_list)
         cls_prior = cls_num_list / sum(cls_num_list)
         #cls_prior = torch.FloatTensor(cls_prior).cuda(args.gpu)
@@ -92,7 +92,7 @@ class EffBalancedSoftmaxLoss(nn.Module):
 class EffBalancedSoftmax(nn.Module):
     def __init__(self, cls_num_list):
         super().__init__()
-        beta = 0.9999
+        beta = 0.999
         cls_num_list = 1.0 - torch.pow(beta, cls_num_list)
         cls_prior = cls_num_list / sum(cls_num_list)
         #cls_prior = torch.FloatTensor(cls_prior).cuda(args.gpu)
